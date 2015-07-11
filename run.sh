@@ -6,7 +6,7 @@ CONFDIR="${BASEDIR}/etc"
 SRVDIR="${BASEDIR}/srv"
 CERTDIR="/data/ssl/"
 
-docker run -d $@ --name nginx \
+docker run $@ --name nginx \
 	-v ${CONFDIR}/nginx/:/etc/nginx/ \
 	-v ${CERTDIR}:/etc/ssl/:ro \
 	-v ${SRVDIR}/:/srv/ \
