@@ -1,0 +1,19 @@
+[Unit]
+Description=nginx container
+Requires=docker.service
+After=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+RestartSec=10s
+ExecStartPre=-/bin/docker stop nginx
+ExecStartPre=-/bin/docker rm nginx
+ExecStartPre=-/bin/docker pull thalarion/nginx
+ExecStart=/data/nginx/run.sh
+
+[Install]
+WantedBy=multi-user.target
+
+[X-Fleet]
+MachineID=8e6431c045c04771868d64643ff133c8
